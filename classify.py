@@ -5,6 +5,7 @@ import re
 import nltk
 from nltk.corpus import stopwords
 import time
+from keras.preprocessing.text import Tokenizer
 
 
 
@@ -121,6 +122,20 @@ class MultiLSTMClassifier:
         print(word_tokens)
         # print(filtered_sentence)
         print(filtered_sentence1)
+
+    def LSTMModel(self):
+        df = self.df
+        MAX_NB_WORDS = 50000
+                # Max number of words in each complaint.
+        MAX_SEQUENCE_LENGTH = 250
+        # This is fixed.
+        EMBEDDING_DIM = 100
+
+        tokenizer = Tokenizer(num_words=MAX_NB_WORDS, filters='!"#$%&()*+,-./:;<=>?@[\]^_`{|}~', lower=True)
+        tokenizer.fit_on_texts(df['Consumer complaint narrative'].values)
+        word_index = tokenizer.word_index
+        print('Found %s unique tokens.' % len(word_index))
+
 
     @timeit
     def pipeline(self):

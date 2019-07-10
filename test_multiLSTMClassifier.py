@@ -20,10 +20,12 @@ class TestMultiLSTMClassifier(TestCase):
     def test_pipeline(self):
         self.mlc.pipeline()
 
+
+    def test_LSTMModel(self):
+        self.mlc.LSTMModel()
+
 if __name__ == "__main__":
     t = TestMultiLSTMClassifier()
     # t.test_exploratory_analysis()
-    t.test_pipeline()
-
-
-
+    #t.test_pipeline()
+    t.test_LSTMModel()
