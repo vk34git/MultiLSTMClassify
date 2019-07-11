@@ -3,29 +3,30 @@ from classify import MultiLSTMClassifier
 
 
 class TestMultiLSTMClassifier(TestCase):
-    mlc = MultiLSTMClassifier()
+    c = MultiLSTMClassifier()
+    p = c.p
+    m = c.m
 
     def test_exploratory_analysis(self):
-        self.mlc.exploratory_analysis()
+        self.c.p.exploratory_analysis()
 
     def test_print_complaint(self):
-        self.mlc.print_complaint(4165)
+        self.p.print_complaint(4165)
 
     def test_clean_text(self):
-        self.mlc.clean_text("[...test[]\{}")
+        self.p.clean_text("[...test[]\{}")
 
     def test_remove_stop_words(self):
-        self.mlc.remove_stop_words("this is i not you")
+        self.p.remove_stop_words("this is i not you")
 
     def test_pipeline(self):
-        self.mlc.pipeline()
-
+        self.c.pipeline()
 
     def test_LSTMModel(self):
-        self.mlc.LSTMModel()
+        self.m.LSTMModel()
 
 if __name__ == "__main__":
     t = TestMultiLSTMClassifier()
-    # t.test_exploratory_analysis()
-    #t.test_pipeline()
-    t.test_LSTMModel()
+    t.test_exploratory_analysis()
+    t.test_pipeline()
+    #t.test_LSTMModel()
